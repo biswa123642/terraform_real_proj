@@ -1,6 +1,6 @@
 [
   {
-    "name": "jms-app",
+    "name": "biswa-app",
     "image": "${app_image}:${tag}",
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
