@@ -1,5 +1,5 @@
 resource "aws_ecs_cluster" "main" {
-  name = "jms-cluster"
+  name = "biswa-cluster"
 }
 data "aws_ecr_repository" "nodeapp"{
 name = "nodeapp"
@@ -18,7 +18,7 @@ data "template_file" "cb_app" {
 }
 
 resource "aws_ecs_task_definition" "app" {
-  family                   = "jms-app-task"
+  family                   = "biswa-app-task"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
@@ -28,7 +28,7 @@ resource "aws_ecs_task_definition" "app" {
 }
 
 resource "aws_ecs_service" "main" {
-  name            = "jms-service1"
+  name            = "biswa-service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = var.app_count
